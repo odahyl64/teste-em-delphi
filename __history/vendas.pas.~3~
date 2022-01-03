@@ -1,0 +1,47 @@
+unit vendas;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Datasnap.Provider, Datasnap.DBClient,
+  Data.DB, Data.Win.ADODB, Vcl.StdCtrls, Vcl.Buttons, Vcl.ToolWin, Vcl.ComCtrls;
+
+type
+  TForm1 = class(TForm)
+    conection: TADOConnection;
+    query: TADOQuery;
+    dsvendas: TDataSource;
+    tblvendas: TClientDataSet;
+    tblvendas1: TDataSetProvider;
+    tblcliente: TClientDataSet;
+    dscliente: TDataSource;
+    dsproduto: TDataSource;
+    tblproduto: TClientDataSet;
+    ToolBar1: TToolBar;
+    btnovo: TBitBtn;
+    btsalavar: TBitBtn;
+    btexcluir: TBitBtn;
+    btalterar: TBitBtn;
+    btcancelar: TBitBtn;
+    btsair: TBitBtn;
+    procedure btsairClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.btsairClick(Sender: TObject);
+begin
+  close;
+end;
+
+end.

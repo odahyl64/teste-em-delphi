@@ -1,0 +1,53 @@
+unit USistemaControle;
+
+interface
+
+uses
+  uConexao, System.SysUtils;
+
+type
+  TSistemaControle = class
+  private
+    FConexao     : TConexao;
+
+    class var FInstance: TSistemaControle;
+
+  public
+    constructor Create();
+    destructor Destroy; override;
+
+
+    class function GetInstance: TSistemaControle;
+
+     property Conexao: TConexao read FConexao write FConexao;
+  end;
+
+implementation
+
+{ TSistemaControl }
+
+
+constructor TSistemaControle.Create();
+begin
+  FConexao     := TConexao.Create;
+end;
+
+destructor TSistemaControle.Destroy;
+begin
+  FConexao.Free;
+
+  inherited;
+end;
+
+class function TSistemaControle.GetInstance: TSistemaControle;
+begin
+  if not Assigned(Self.FInstance) then
+  begin
+    Self.FInstance := TSistemaControle.Create();
+  end;
+
+  Result := Self.FInstance;
+end;
+
+
+end.

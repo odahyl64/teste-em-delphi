@@ -1,0 +1,140 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Pedido de Vendas'
+  ClientHeight = 270
+  ClientWidth = 458
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object ToolBar1: TToolBar
+    Left = 0
+    Top = 0
+    Width = 458
+    Height = 29
+    Caption = 'ToolBar1'
+    TabOrder = 0
+    ExplicitLeft = 136
+    ExplicitTop = 144
+    ExplicitWidth = 150
+    object BitBtn1: TBitBtn
+      Left = 0
+      Top = 0
+      Width = 69
+      Height = 22
+      Caption = 'Adicionar'
+      TabOrder = 0
+    end
+    object BitBtn2: TBitBtn
+      Left = 69
+      Top = 0
+      Width = 67
+      Height = 22
+      Caption = 'Salvar'
+      TabOrder = 1
+    end
+    object BitBtn3: TBitBtn
+      Left = 136
+      Top = 0
+      Width = 69
+      Height = 22
+      Caption = 'Excluir'
+      TabOrder = 2
+    end
+    object BitBtn5: TBitBtn
+      Left = 205
+      Top = 0
+      Width = 69
+      Height = 22
+      Caption = 'Cancelar'
+      TabOrder = 4
+    end
+    object BitBtn4: TBitBtn
+      Left = 274
+      Top = 0
+      Width = 63
+      Height = 22
+      Caption = 'Alterar'
+      TabOrder = 3
+    end
+    object BitBtn6: TBitBtn
+      Left = 337
+      Top = 0
+      Width = 64
+      Height = 22
+      Caption = 'Sair'
+      TabOrder = 5
+    end
+  end
+  object conection: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=ADsDSOObject;Password="";User ID=odahyl;Encrypt Passwor' +
+      'd=False;Data Source=db_vendas;Location=C:\vendas\banco de dados;' +
+      'Mode=Read;Bind Flags=0;ADSI Flag=-2147483648'
+    LoginPrompt = False
+    Mode = cmRead
+    Provider = 'ADsDSOObject'
+    Left = 40
+    Top = 16
+  end
+  object query: TADOQuery
+    Connection = conection
+    Parameters = <>
+    SQL.Strings = (
+      'select * from tbvendas')
+    Left = 96
+    Top = 16
+  end
+  object dsvendas: TDataSource
+    DataSet = query
+    Left = 144
+    Top = 16
+  end
+  object tblvendas: TClientDataSet
+    Aggregates = <>
+    MasterSource = dsvendas
+    PacketRecords = 0
+    Params = <>
+    ReadOnly = True
+    Left = 200
+    Top = 16
+  end
+  object tblvendas1: TDataSetProvider
+    DataSet = tblvendas
+    Left = 256
+    Top = 16
+  end
+  object tblcliente: TClientDataSet
+    Aggregates = <>
+    MasterSource = dscliente
+    PacketRecords = 0
+    Params = <>
+    Left = 48
+    Top = 64
+  end
+  object dscliente: TDataSource
+    DataSet = query
+    Left = 104
+    Top = 64
+  end
+  object dsproduto: TDataSource
+    DataSet = tblvendas
+    Left = 160
+    Top = 64
+  end
+  object tblproduto: TClientDataSet
+    Aggregates = <>
+    MasterSource = dsproduto
+    PacketRecords = 0
+    Params = <>
+    Left = 224
+    Top = 64
+  end
+end

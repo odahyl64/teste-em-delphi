@@ -1,0 +1,17 @@
+program PedidoVenda;
+
+uses
+  Vcl.Forms,
+  Principal in 'View\Principal.pas' {FrmPrincipal},
+  conexao in 'Dao\conexao.pas',
+  UVendaDao in 'Dao\UVendaDao.pas',
+  UVendaControl in 'Controlle\UVendaControl.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFrmPrincipal, FrmPrincipal);
+  Application.Run;
+end.

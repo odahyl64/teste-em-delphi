@@ -1,0 +1,14 @@
+program UPrincipal;
+
+uses
+  Vcl.Forms,
+  UVendas in '..\UVendas.pas' {FrnPrincipal};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFrnPrincipal, FrnPrincipal);
+  Application.Run;
+end.

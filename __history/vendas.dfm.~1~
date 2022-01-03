@@ -1,0 +1,81 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Pedido de Vendas'
+  ClientHeight = 270
+  ClientWidth = 406
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object conection: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=ADsDSOObject;Password="";User ID=odahyl;Encrypt Passwor' +
+      'd=False;Data Source=db_vendas;Location=C:\vendas\banco de dados;' +
+      'Mode=Read;Bind Flags=0;ADSI Flag=-2147483648'
+    LoginPrompt = False
+    Mode = cmRead
+    Provider = 'ADsDSOObject'
+    Left = 40
+    Top = 16
+  end
+  object query: TADOQuery
+    Connection = conection
+    Parameters = <>
+    SQL.Strings = (
+      'select * from tbvendas')
+    Left = 96
+    Top = 16
+  end
+  object dsvendas: TDataSource
+    DataSet = query
+    Left = 144
+    Top = 16
+  end
+  object tblvendas: TClientDataSet
+    Aggregates = <>
+    MasterSource = dsvendas
+    PacketRecords = 0
+    Params = <>
+    ReadOnly = True
+    Left = 200
+    Top = 16
+  end
+  object tblvendas1: TDataSetProvider
+    DataSet = tblvendas
+    Left = 256
+    Top = 16
+  end
+  object tblcliente: TClientDataSet
+    Aggregates = <>
+    MasterSource = dscliente
+    PacketRecords = 0
+    Params = <>
+    Left = 48
+    Top = 64
+  end
+  object dscliente: TDataSource
+    DataSet = query
+    Left = 104
+    Top = 64
+  end
+  object dsproduto: TDataSource
+    DataSet = tblvendas
+    Left = 160
+    Top = 64
+  end
+  object tblproduto: TClientDataSet
+    Aggregates = <>
+    MasterSource = dsproduto
+    PacketRecords = 0
+    Params = <>
+    Left = 224
+    Top = 64
+  end
+end

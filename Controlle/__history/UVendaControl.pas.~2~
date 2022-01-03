@@ -1,0 +1,11 @@
+unit UVendaControl;
+
+interface
+
+uses UVendaModel, System.SysUtils, FireDAC.Comp.Client;
+
+type
+  TVenda
+implementation
+
+end.

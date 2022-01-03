@@ -1,0 +1,55 @@
+unit UVendasControle;
+
+interface
+
+uses
+  uVendasModel, System.SysUtils, FireDAC.Comp.Client;
+
+type
+  TClienteControl = class
+  private
+    FVendasModel: TVendasModel;
+
+  public
+    constructor Create;
+    destructor Destroy; override;
+
+    function Salvar: Boolean;
+    function Obter: TFDQuery;
+    function GetId(AAutoIncrementar: Integer): Integer;
+
+    property VendasModel: TVendasModel read FVendasModel write FVendasModel;
+  end;
+
+implementation
+
+{ TClienteControl }
+
+constructor TClienteControl.Create;
+begin
+  FVendasModel := TVendasModel.Create;
+end;
+
+destructor TClienteControl.Destroy;
+begin
+  FVendasModel.Free;
+
+  inherited;
+end;
+
+function TClienteControl.GetId(AAutoIncrementar: Integer): Integer;
+begin
+  Result := FVendasModel.GetId(AAutoIncrementar);
+end;
+
+function TClienteControl.Obter: TFDQuery;
+begin
+  Result := FVendasModel.Obter;
+end;
+
+function TClienteControl.Salvar: Boolean;
+begin
+  Result := FVendasModel.Salvar;
+end;
+
+end.

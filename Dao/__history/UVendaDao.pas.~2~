@@ -1,0 +1,60 @@
+unit UVendaDao;
+
+interface
+
+uses
+  FireDAC.Comp.Client, conexao, uVendaModel, System.SysUtils;
+
+type
+  TVendaDao = class
+  private
+    FConexao: TConexao;
+  public
+    constructor Create;
+
+    function Incluir(AVendaModel: TVendaModel) : Boolean;
+    function Alterar(AvendaModel: TVendaModel) : Boolean;
+    function Excluir(AvendaModel: TVendaModel) : Boolean;
+    function GetId(AAutoIncrementar: integer): Integer;
+    function Obter: TFDQuery
+  end;
+
+implementation
+
+  { TVendaDao}
+
+uses uSistemaControl;
+
+function TVendaDao.Alterar(AvendaModel: erroneous type): Boolean;(AVendaModel: TVendaModel): Boolean;
+var
+  VQry: TFDQuery;
+begin
+  vQry := Fconexao.CriarQuery();
+  try
+    VQry.ExecSQL('update venda set nome = :nome where (codigo = :codigo)', [AVendaModel.Nome, AVendaModel.Codigo]);
+
+    Rsult := True;
+  finally
+    VQry.Free;
+
+  end;
+
+  constructor TVendaDao.Create;
+  begin
+    Fconexao := TSistemaControl.GetInstance().Conexao;
+  end;
+
+Function TVendaDao.Excluir(AvendaModel: erroneous type): Boolean;(AVendaModel: TVendaModel) : Boolean;
+var
+  VQry: TFDQuery;
+begin
+  VQry := FConexao.CriarQuery();
+  try
+    VQry.ExecSQL('delete from venda where (codigo = :codigo)', [AVendaModel.Codigo]);
+  finally
+    VQry.Free;
+  end;
+end;
+
+
+end.
