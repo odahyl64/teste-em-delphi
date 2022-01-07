@@ -3,20 +3,28 @@ unit USistemaControl;
 interface
 
 uses
-  UConexao, System.SysUtils;
+  uConexao, System.SysUtils;
+
 type
   TSistemaControl = class
   private
     FConexao     : TConexao;
+
     class var FInstance: TSistemaControl;
+
   public
     constructor Create();
     destructor Destroy; override;
 
+    procedure CarregarEmpresa(ACodigoEmpresa: Integer);
+
     class function GetInstance: TSistemaControl;
+
      property Conexao: TConexao read FConexao write FConexao;
   end;
+
 implementation
+
 { TSistemaControl }
 
 constructor TSistemaControl.Create();

@@ -1,0 +1,28 @@
+unit UDM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  TDM = class(TDataModule)
+    SQLConnection: TSQLConnection;
+    MySQLDriverLink: TFDPhysMySQLDriverLink;
+    WaitCursor: TFDGUIxWaitCursor;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DM: TDM;
+
+implementation
+
+{%CLASSGROUP 'System.Classes.TPersistent'}
+
+{$R *.dfm}
+
+end.

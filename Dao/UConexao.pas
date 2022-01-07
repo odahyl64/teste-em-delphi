@@ -3,53 +3,72 @@ unit UConexao;
 interface
 
 uses
-  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
-  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, Data.DB, FireDAC.Comp.Client, FireDAC.Phys.MySQLDef,
-  FireDAC.Phys.FB, System.SysUtils, FireDAC.DApt, FireDAC.VCLUI.Wait;
+  FireDAC.Comp.Client, FireDAC.stan.intf, System.SysUtils,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, Data.DB, FireDAC.Phys.MySQLDef,
+  FireDAC.Phys.FB, FireDAC.DApt, FireDAC.VCLUI.Wait;
 type
   TConexao = class
   private
-    FConn: TFDConnection;
-    procedure ConfigurarConexao;
+    FServidor: string;
+    FMsgerro: string;
+    FSenha: string;
+    FBase: string;
+    FLogin: string;
+    FPorta: string;
+    MySQL: string;
+    FConexao: TFDConnection;
+
   public
-    constructor Create;
+    constructor Create (NomeConexao : TFDConnection);
     destructor Destroy; override;
-    function GetConn: TFDConnection;
-    function CriarQuery: TFDQuery;
+
+    function fnc_conectar_banco_dados: boolean;
+
+    property Conexao : TFDConnection Read FConexao Write FConexao;
+    property Servidor : string Read FServidor Write FServidor;
+    property Base     : string Read FBase Write FBase;
+    property Login    : string Read FLogin Write FLogin;
+    property Senha    : string Read FSenha Write FSenha;
+    property Porta    : string Read FPorta Write FPorta;
+    property Msgerro  : string Read FMsgerro Write FMsgerro;
   end;
-  const
-    PATH_BANCO: string = 'C:\vendas\banco de dados\tbvendas.FDB';
 implementation
+
 { TConexao }
-procedure TConexao.ConfigurarConexao;
+
+constructor TConexao.Create(NomeConexao: TFDConnection);
 begin
-  FConn.Params.DriverID := 'FB';
-  FConn.Params.Database := PATH_BANCO;
-  FConn.Params.UserName := 'SYSDBA';
-  FConn.Params.Password := 'masterkey';
-  FConn.LoginPrompt     := False;
-end;
-constructor TConexao.Create;
-begin
-  FConn := TFDConnection.Create(nil);
-  Self.ConfigurarConexao();
-end;
-function TConexao.CriarQuery: TFDQuery;
-var
-  VQuery: TFDQuery;
-begin
-  VQuery := TFDQuery.Create(nil);
-  VQuery.Connection := FConn;
-  Result := VQuery;
+  FConexao := NomeConexao;
 end;
 destructor TConexao.Destroy;
 begin
-  FConn.Free;
+  FConexao.connected := False;
   inherited;
 end;
-function TConexao.GetConn: TFDConnection;
+
+function TConexao.fnc_conectar_banco_dados: boolean;
 begin
-  Result := FConn;
+   Result := True;
+
+   FConexao.params.clear;
+
+   FConexao.Params.Add('Serve=' + FServidor);
+   FConexao.Params.Add('user_name=' + FLogin);
+   FConexao.Params.Add('passorwd=' + FSenha);
+   FConexao.Params.Add('port=' + FPorta);
+   FConexao.Params.Add('Database=' + FBase);
+   FConexao.Params.Add('DriverID' + MySQL);
+
+   try
+   FConexao.Connected := True;
+
+   Except
+     on e:Exception do
+     begin
+        FMsgErro := e.Message;
+        Result := False;
+     end;
+   end;
 end;
 
 end.

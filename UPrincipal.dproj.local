@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/01/06 12:59:58.000.248,=C:\Users\odahyl\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 13:01:17.000.828,C:\vendas\View\vendas.pas=C:\Users\odahyl\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 13:01:17.000.828,C:\vendas\View\vendas.dfm=C:\Users\odahyl\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2022/01/06 13:01:36.000.509,C:\vendas\UPrincipal.dproj=C:\Users\odahyl\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2022/01/06 13:36:45.000.525,=C:\vendas\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 13:37:33.000.698,C:\vendas\Controlle\UVendaControl.pas=C:\vendas\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 13:43:51.000.129,=C:\vendas\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 13:44:10.000.865,C:\vendas\Model\UVendaModel.pas=C:\vendas\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 13:50:41.000.835,=C:\vendas\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 13:51:59.000.828,C:\vendas\Model\UEnumerado.pas=C:\vendas\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 13:53:19.000.587,=C:\vendas\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 13:53:40.000.464,C:\vendas\Dao\UVendaDao.pas=C:\vendas\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 14:00:12.000.701,=C:\vendas\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 14:00:31.000.837,C:\vendas\Dao\UConexao.pas=C:\vendas\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 14:03:58.000.465,=C:\vendas\Unit1.pas</Transaction>
+    <Transaction>2022/01/06 14:04:16.000.759,C:\vendas\Controlle\USistemaControl.pas=C:\vendas\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

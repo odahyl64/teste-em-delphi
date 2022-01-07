@@ -1,6 +1,7 @@
-unit uEnumerado;
+unit UEnumerado;
 
 interface
+
 type
   TAcao = (tacIndefinido, tacIncluir, tacAlterar, tacExcluir);
 
